@@ -53,5 +53,32 @@ public class Homework1 {
 }
 
 
+# Homework2
+```java
+public class Homework2 {
+    public static void main(String[] args) {
+        int n = 20;
+        long[] fib = new long[n];
+
+        fib[0] = 1;
+        fib[1] = 1;
+
+        for (int i = 2; i<n;i++){
+            fib[i] = fib[i-1]+fib[i-2];
+        }
+
+        System.out.println("");
+        for(int i=0;i<n;i++){
+            System.out.print(fib[i]+(i==n-1?"":","));
+        }
+        System.out.println();
+    }
+}
+
+
+```
+![Alt homework21](./images/homework2.png)
+
+
 ```
 ![Alt homework11](./images/homework1.png)
