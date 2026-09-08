@@ -1,4 +1,4 @@
-# OOP2026
+# Homework1
 ```java
 public class Homework1 {
     public static void main(String[] args) {
