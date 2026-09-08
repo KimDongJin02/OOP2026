@@ -81,6 +81,3 @@ public class Homework2 {
 ```
 ![Alt homework21](./images/homework2.png)
 
-
-```
-![Alt homework11](./images/homework1.png)
