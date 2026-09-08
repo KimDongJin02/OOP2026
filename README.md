@@ -81,3 +81,27 @@ public class Homework2 {
 ```
 ![Alt homework21](./images/homework2.png)
 
+# Homework3
+```java
+public class Homework3 {
+    public static void main(String[] args) {
+        int n = 21; 
+        long[] fib = new long[n + 1];
+        
+        fib[1] = 1;
+        fib[2] = 1;
+        
+        for (int i = 3; i <= n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        
+        for (int i = 1; i <= 20; i++) {
+            double ratio = (double) fib[i + 1] / fib[i];
+            System.out.printf("%2d | %d / %d \t\t\t| %.15f%n", i, fib[i + 1], fib[i], ratio);
+        }
+    }
+}
+
+```
+![Alt homework31](./images/homework3.png)
+
