@@ -126,3 +126,52 @@ public class Homework4 {
 
 ```
 ![Alt homework41](./images/homework4.png)
+
+# Homework5
+```java
+public class homework5 {
+    public static void main(String[] args) {
+        int iterations = 1000000; 
+
+        double piLeibniz = calculateLeibniz(iterations);
+        System.out.println("Gregory-Leibniz 공식 결과: " + piLeibniz);
+
+        double piMadhava = calculateMadhava(iterations);
+        System.out.println("Madhava 공식 결과: " + piMadhava);
+        
+        System.out.println("자바 내장 Math.PI 상수: " + Math.PI);
+    }
+
+  
+    public static double calculateLeibniz(int limit) {
+        double sum = 0.0;
+        for (int i = 0; i < limit; i++) {
+            
+            double denominator = 2 * i + 1;
+            
+            if (i % 2 == 0) {
+                sum += 4.0 / denominator;
+            } else {
+                sum -= 4.0 / denominator;
+            }
+        }
+        return sum;
+    }
+
+    public static double calculateMadhava(int limit) {
+        double sum = 0.0;
+        for (int k = 0; k < limit; k++) {
+            
+            double numerator = Math.pow(-1.0 / 3.0, k);
+            
+            double denominator = 2 * k + 1;
+            
+            sum += numerator / denominator;
+        }
+        
+        return Math.sqrt(12.0) * sum;
+    }
+}
+
+```
+![Alt homework51](./images/homework5.png)
