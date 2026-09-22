@@ -207,3 +207,45 @@ public class homework6 {
 
 ```
 ![Alt homework61](./images/homework6.png)
+
+# Homework7
+```java
+public class homework7 {
+    public static void main(String[] args) {
+        int data[] = new int[20];
+        
+        for (int i = 0; i < 20; i++) {
+            data[i] = (int)(Math.random() * 100);
+        }
+        
+        System.out.println("--- 정렬 전 ---");
+        for (int i = 0; i < 20; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println("\n");
+
+        for (int i = 0; i < 20 - 1; i++) {
+            int minIndex = i; 
+            
+            for (int j = i + 1; j < 20; j++) {
+                if (data[j] < data[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            
+            int temp = data[minIndex];
+            data[minIndex] = data[i];
+            data[i] = temp;
+        }
+        
+        System.out.println("--- 정렬 후 (선택 정렬 완료) ---");
+        for (int i = 0; i < 20; i++) {
+            System.out.println(data[i]);
+        }
+    }
+}
+
+
+```
+![Alt homework71](./images/homework7.png)
+
