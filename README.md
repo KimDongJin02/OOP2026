@@ -130,48 +130,49 @@ public class Homework4 {
 # Homework5
 ```java
 public class homework5 {
-    public static void main(String[] args) {
-        int iterations = 1000000; 
 
-        double piLeibniz = calculateLeibniz(iterations);
-        System.out.println("Gregory-Leibniz 공식 결과: " + piLeibniz);
-
-        double piMadhava = calculateMadhava(iterations);
-        System.out.println("Madhava 공식 결과: " + piMadhava);
-        
-        System.out.println("자바 내장 Math.PI 상수: " + Math.PI);
-    }
-
-  
-    public static double calculateLeibniz(int limit) {
-        double sum = 0.0;
-        for (int i = 0; i < limit; i++) {
+    public static double calculatePiGregory(int iterations) {
+        double pi = 0.0;
+        for (int i = 0; i < iterations; i++) {
+            double term = 4.0 / (2 * i + 1);
             
-            double denominator = 2 * i + 1;
-            
-            if (i % 2 == 0) {
-                sum += 4.0 / denominator;
+            if (i % 2 == 1) {
+                pi -= term;
             } else {
-                sum -= 4.0 / denominator;
+                pi += term;
             }
         }
-        return sum;
+        return pi;
     }
 
-    public static double calculateMadhava(int limit) {
+    
+    public static double calculatePiMadhava(int iterations) {
         double sum = 0.0;
-        for (int k = 0; k < limit; k++) {
+        for (int k = 0; k < iterations; k++) {
             
-            double numerator = Math.pow(-1.0 / 3.0, k);
-            
-            double denominator = 2 * k + 1;
-            
-            sum += numerator / denominator;
+            double term = Math.pow(-1.0 / 3.0, k) / (2 * k + 1);
+            sum += term;
         }
         
         return Math.sqrt(12.0) * sum;
     }
+
+    public static void main(String[] args) {
+        System.out.println("=== 실제 정밀한 Math.PI 값 ===");
+        System.out.println("Java Math.PI : " + Math.PI);
+        System.out.println();
+
+        System.out.println("=== 1. 그레고리-라이프니츠 급수 ===");       
+        System.out.println("반복 10,000회  : " + calculatePiGregory(10000));
+        System.out.println("반복 100,000회 : " + calculatePiGregory(100000));
+        System.out.println();
+
+        System.out.println("=== 2. 마다바 급수 ===");
+        System.out.println("반복 10회      : " + calculatePiMadhava(10));
+        System.out.println("반복 20회      : " + calculatePiMadhava(20));
+    }
 }
+
 
 ```
 ![Alt homework51](./images/homework5.png)
