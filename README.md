@@ -207,6 +207,3 @@ public class homework6 {
 
 ```
 ![Alt homework61](./images/homework6.png)
-
-```
-![Alt homework51](./images/homework5.png)
