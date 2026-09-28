@@ -249,3 +249,35 @@ public class homework7 {
 ```
 ![Alt homework71](./images/homework7.png)
 
+# Homework8
+```java
+public class homework8 {
+    public static void main(String[] args) {
+        int[][] score = new int[30][4];
+        
+        for (int i = 0; i < score.length; i++) {
+            for (int j = 0; j < score[i].length; j++) {
+                score[i][j] = (int) (Math.random() * 101);
+            }
+        }
+
+        for (int i = 0; i < score.length; i++) {
+            System.out.print((i + 1) + " ");
+            
+            int sum = 0; 
+            
+            for (int j = 0; j < score[i].length; j++) {
+                System.out.print(score[i][j] + " ");
+                sum += score[i][j];
+            }
+            
+            System.out.println(sum);
+        }
+    }
+}
+
+
+
+```
+![Alt homework81](./images/homework8.png)
+
