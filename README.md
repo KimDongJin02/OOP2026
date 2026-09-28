@@ -281,3 +281,65 @@ public class homework8 {
 ```
 ![Alt homework81](./images/homework8.png)
 
+# Homework10
+```java
+public class homework10 {
+    public static void main(String[] args) {
+        int arrayCount = 100;
+        int maxValue = 100;
+        int binSize = 10;
+        int displayScale = 1;
+
+        if (args.length >= 4) {
+            arrayCount = Integer.parseInt(args[0]);
+            maxValue = Integer.parseInt(args[1]);
+            binSize = Integer.parseInt(args[2]);
+            displayScale = Integer.parseInt(args[3]);
+        } else {
+            System.out.println("⚠️ 실행 매개변수가 부족하여 기본값(100 100 10 1)으로 실행합니다.");
+        }
+
+        int[] data = new int[arrayCount];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (int) (Math.random() * (maxValue + 1));
+        }
+
+        int binCount = maxValue / binSize;
+        if (maxValue % binSize != 0) {
+            binCount++;
+        }
+        int[] histogram = new int[binCount];
+
+        for (int score : data) {
+            if (score >= maxValue) {
+                histogram[binCount - 1]++;
+            } else {
+                int binIndex = score / binSize;
+                if (binIndex < binCount) {
+                    histogram[binIndex]++;
+                }
+            }
+        }
+
+        System.out.println("--- 도수분포표 결과 ---");
+        for (int i = 0; i < binCount; i++) {
+            int start = i * binSize;
+            int end = start + (binSize - 1);
+            
+            if (end > maxValue) end = maxValue;
+
+            System.out.printf("%d~%d\t", start, end);
+
+            int sharpCount = histogram[i] / displayScale;
+            for (int j = 0; j < sharpCount; j++) {
+                System.out.print("#");
+            }
+            System.out.println(); 
+        }
+    }
+}
+
+
+```
+![Alt homework101](./images/homework10.png)
+
