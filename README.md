@@ -396,3 +396,98 @@ public class homework11 {
 
 ```
 ![Alt homework111](./images/homework11.png)
+
+
+# Homework13
+```java
+import java.util.Scanner;
+import java.util.Stack;
+
+public class homework13 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("수식을 입력하세요 (종료하려면 'exit'): ");
+            String inputString = scanner.nextLine().trim();
+
+            if (inputString.equalsIgnoreCase("exit")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+
+            String[] arrOfStr = inputString.split("\\s+");
+            
+            int operandCount = 0;
+            for (String token : arrOfStr) {
+                if (token.matches("-?\\d+(\\.\\d+)?")) {
+                    operandCount++;
+                }
+            }
+
+            if (operandCount > 3) {
+                System.out.println("오류: 피연산자(숫자)는 최대 3개까지만 입력 가능합니다.\n");
+                continue;
+            }
+
+            try {
+                double result = evaluateExpression(arrOfStr);
+                System.out.printf("결과: %.2f\n\n", result);
+            } catch (Exception e) {
+                System.out.println("잘못된 수식입니다. 다시 입력해주세요.\n");
+            }
+        }
+        scanner.close();
+    }
+
+    private static int getPriority(String op) {
+        switch (op) {
+            case "*": 
+            case "#": return 2; 
+            case "+": 
+            case "-": return 1; 
+            default: return -1;
+        }
+    }
+
+    private static double evaluateExpression(String[] tokens) {
+        Stack<Double> values = new Stack<>();
+        Stack<String> operators = new Stack<>();
+
+        for (String token : tokens) {
+            if (token.matches("-?\\d+(\\.\\d+)?")) {
+                values.push(Double.parseDouble(token));
+            } 
+            else if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/") || token.equals("#")) {
+                while (!operators.isEmpty() && getPriority(operators.peek()) >= getPriority(token)) {
+                    values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+                }
+                operators.push(token);
+            }
+        }
+
+        while (!operators.isEmpty()) {
+            values.push(applyOp(operators.pop(), values.pop(), values.pop()));
+        }
+
+        return values.pop();
+    }
+
+    private static double applyOp(String op, double b, double a) {
+        switch (op) {
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": 
+            case "#": return a * b; 
+            case "/": 
+                if (b == 0) throw new UnsupportedOperationException();
+                return a / b;
+        }
+        return 0;
+    }
+}
+
+
+```
+![Alt homework131](./images/homework13.png)
+
