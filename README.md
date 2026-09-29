@@ -343,3 +343,56 @@ public class homework10 {
 ```
 ![Alt homework101](./images/homework10.png)
 
+
+# Homework11
+```java
+import java.util.Arrays;
+
+public class homework11 {
+    public static void main(String[] args) {
+        int array_count = 10; 
+        int[] arr = new int[array_count];
+
+        System.out.print("Data: ");
+        for (int i = 0; i < array_count; i++) {
+            arr[i] = (int) (Math.random() * 100) + 1; 
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println("\n");
+
+        double sum = 0;
+        for (int i = 0; i < array_count; i++) {
+            sum += arr[i];
+        }
+        double arithmeticMean = sum / array_count;
+
+        double logSum = 0;
+        for (int i = 0; i < array_count; i++) {
+            logSum += Math.log(arr[i]);
+        }
+        double geometricMean = Math.exp(logSum / array_count);
+
+        double reciprocalSum = 0;
+        for (int i = 0; i < array_count; i++) {
+            reciprocalSum += 1.0 / arr[i];
+        }
+        double harmonicMean = array_count / reciprocalSum;
+
+        Arrays.sort(arr); 
+        double median;
+        if (array_count % 2 == 0) {
+            median = (arr[array_count / 2 - 1] + arr[array_count / 2]) / 2.0;
+        } else {
+            median = arr[array_count / 2];
+        }
+
+        System.out.printf("Arithmetic Mean : %.4f\n", arithmeticMean);
+        System.out.printf("Geometric Mean  : %.4f\n", geometricMean);
+        System.out.printf("Harmonic Mean   : %.4f\n", harmonicMean);
+        System.out.printf("Median          : %.4f\n", median);
+    }
+}
+
+
+```
+![Alt homework111](./images/homework11.png)
